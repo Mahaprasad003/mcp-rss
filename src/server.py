@@ -6,8 +6,15 @@ import uvicorn
 from fastmcp import FastMCP
 from starlette.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
+from starlette.responses import JSONResponse
 
 mcp = FastMCP("Poke MCP Server")
+
+
+@mcp.custom_route("/health", methods=["GET"])
+async def health_check(request):
+    return JSONResponse({"status": "healthy"})
+
 
 RSS_FEED_URL = "https://mahaprasad.xyz/rss"
 
