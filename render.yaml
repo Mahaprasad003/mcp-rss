@@ -9,3 +9,5 @@ services:
     envVars:
       - key: ENVIRONMENT
         value: production
+      - key: POKE_API_KEY
+        sync: false
